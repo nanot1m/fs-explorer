@@ -138,6 +138,7 @@ function App() {
       }
     }
     await idbSet(IDB_RECENT_PROJECTS, nextValue);
+    setRecentProjects(nextValue);
   }
 
   function handleDirectoryOpen() {
