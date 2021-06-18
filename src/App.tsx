@@ -32,13 +32,17 @@ const compareFileSystemEntries = (
 
 const FileSystemEntryView = memo(function FileSystemEntryView({
   handle,
+  defaultIsExpanded,
 }: {
   handle: FileSystemDirectoryHandle | FileSystemFileHandle;
+  defaultIsExpanded?: boolean;
 }) {
   const [entries, setEntries] = useState(
     Array<FileSystemDirectoryHandle | FileSystemFileHandle>()
   );
-  const { isOpen, onToggle } = useDisclosure();
+  const { isOpen, onToggle } = useDisclosure({
+    defaultIsOpen: defaultIsExpanded,
+  });
 
   useEffect(() => {
     let cancelled = false;
@@ -194,7 +198,7 @@ function App() {
       </Menu>
 
       <List my={4}>
-        <FileSystemEntryView handle={handle} />
+        <FileSystemEntryView handle={handle} defaultIsExpanded />
       </List>
     </Container>
   );
