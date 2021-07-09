@@ -160,7 +160,7 @@ function App() {
         <Heading size="md" mb={2}>
           Recent Projects
         </Heading>
-        <Stack isInline wrap="wrap">
+        <Stack>
           {recentProjects.map((handle) => (
             <Button
               key={handle.name}
