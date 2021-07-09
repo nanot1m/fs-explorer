@@ -119,8 +119,9 @@ function App() {
   const [recentProjects, setRecentProjects] = useState(
     Array<FileSystemHandle>()
   );
-  const [handle, setHandle] =
-    useState<FileSystemFileHandle | FileSystemDirectoryHandle>();
+  const [handle, setHandle] = useState<
+    FileSystemFileHandle | FileSystemDirectoryHandle
+  >();
 
   useEffect(() => {
     idbGet(IDB_RECENT_PROJECTS).then((result) => {
@@ -159,7 +160,7 @@ function App() {
         <Heading size="md" mb={2}>
           Recent Projects
         </Heading>
-        <Stack isInline>
+        <Stack isInline wrap="wrap">
           {recentProjects.map((handle) => (
             <Button
               key={handle.name}
